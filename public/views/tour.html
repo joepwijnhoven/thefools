@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Datum</th>
+    <th>Tijd</th>
+    <th>Plaats</th>
+    <th>Cafe</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="optreden in result">
+      <td>
+        {{optreden.date | date:'d MMMM'}}
+      </td>
+      <td>
+        {{optreden.tijd || "----"}}
+      </td>
+      <td>
+        {{optreden.place}}
+      </td>
+      <td>
+        {{optreden.cafe || "----"}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
