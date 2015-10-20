@@ -8,15 +8,12 @@
   </tr>
   </thead>
   <tbody>
-    <div data-ng-hide="!result">
-      Er is geen informatie beschikbaar.
-    </div>
     <tr ng-repeat="optreden in result">
       <td>
         {{optreden.date | date:'d MMMM'}}
       </td>
       <td>
-        {{optreden.tijd || "----"}}
+        {{optreden.time || "----"}}
       </td>
       <td>
         {{optreden.place}}
