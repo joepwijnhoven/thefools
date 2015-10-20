@@ -8,6 +8,9 @@
   </tr>
   </thead>
   <tbody>
+    <div data-ng-hide="!result">
+      Er is geen informatie beschikbaar.
+    </div>
     <tr ng-repeat="optreden in result">
       <td>
         {{optreden.date | date:'d MMMM'}}

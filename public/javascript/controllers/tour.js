@@ -8,7 +8,7 @@
  * Controller of the theFoolsApp
  */
 angular.module('theFoolsApp').controller('TourCtrl', ['$scope', '$http', function ($scope, $http) {
-  $http.get("http://localhost:3000/tour")
+  $http.get("/TourData")
       .success(function(data) {
           $scope.result = data;
       });
