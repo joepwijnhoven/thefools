@@ -1,0 +1,9 @@
+diff a/index.js b/index.js	(rejected hunks)
+@@ -11,7 +11,6 @@
+ // views is directory for all template files
+ app.set('views', __dirname + '/views');
+ 
+-  response.sendFile(path.join(__dirname+'/index.html'));
+ http.createServer(app).listen(app.get('port') ,app.get('ip'), function () {
+   console.log("? Express server listening at %s:%d ", app.get('ip'), app.get('port'));
+   server();
