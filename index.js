@@ -32,17 +32,23 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.set('views', __dirname + '/views');
 
 app.get('/TourData', function(req, res) {
-  mysqlClient.query('SELECT * from tour', function(err, rows, fields) {
-    if (err) {
-      res.send('NOT OK' + JSON.stringify(err));
-    } else {
-      res.send(rows);
-    }
-  });
+  //console.log(req.headers);
+  if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
+    mysqlClient.query('SELECT * from tour', function (err, rows, fields) {
+      if (err) {
+        res.send('NOT OK' + JSON.stringify(err));
+      } else {
+        res.send(rows);
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
+
 });
 
-app.get('*', function(request, response) {
-  response.sendFile(path.join(__dirname+'/index.html'))
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname+'/index.html'))
 });
 
 http.createServer(app).listen(app.get('port') ,app.get('ip'), function () {
