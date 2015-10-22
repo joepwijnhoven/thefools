@@ -1,0 +1,43 @@
+<div ng-show="!loggedIn">
+    <form role="form" ng-submit="submit()">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="username" ng-model="username" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" ng-model="password" class="form-control" id="pwd">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <br>
+</div>
+<div ng-show="loggedIn" data-ng-init="init()">
+    <a ng-click="logOff()">log uit</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Tijd</th>
+            <th>Plaats</th>
+            <th>Cafe</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-click="showPerformance({{optreden.id}})" ng-repeat="optreden in results">
+            <td>
+                {{optreden.date | date:'d MMMM'}}
+            </td>
+            <td>
+                {{optreden.time || "----"}}
+            </td>
+            <td>
+                {{optreden.place}}
+            </td>
+            <td>
+                {{optreden.cafe || "----"}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

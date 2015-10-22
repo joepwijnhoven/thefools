@@ -31,6 +31,20 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 
+app.get('/Login', function(req, res) {
+  //console.log(req.headers);
+  if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
+    if(req.headers.username == "joep") {
+      res.send("OK")
+    } else {
+      throw new Error();
+    }
+
+  } else {
+    res.redirect('/');
+  }
+});
+
 app.get('/TourData', function(req, res) {
   //console.log(req.headers);
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
@@ -44,7 +58,21 @@ app.get('/TourData', function(req, res) {
   } else {
     res.redirect('/');
   }
+});
 
+app.get('/SingleTourData', function(req, res) {
+  //console.log(req.headers);
+  if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
+    mysqlClient.query('SELECT * from tour where id =' + mysql.escape(req.headers.id), function (err, rows, fields) {
+      if (err) {
+        res.send('NOT OK' + JSON.stringify(err));
+      } else {
+        res.send(rows);
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.get('*', function(req, res) {

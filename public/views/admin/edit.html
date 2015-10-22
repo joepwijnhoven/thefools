@@ -1,0 +1,52 @@
+<div ng-init="editInit()">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="date">Datum:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="date" value="{{result.date | date:'yyyy-MM-dd'}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="begintime">Begintijd:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="begintime" value="{{result.time}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="endtime">Eindtijd:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="endtime" value="{{result.time}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="plaats">Plaats:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="plaats" value="{{result.place}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cafe">Cafe:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cafe" value="{{result.cafe}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox" checked="{{result.typeOfParty.data[0]}}">Open?</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Save</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Delete</button>
+            </div>
+        </div>
+    </form>
+    <a href="/Adminfool/Index">&laquo Terug</a>
+</div>

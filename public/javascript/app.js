@@ -26,8 +26,13 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/Adminfool', {
-        templateUrl: 'views/adminfool.html',
+      .when('/Adminfool/Index', {
+        templateUrl: 'views/admin/adminfool.html',
+        controller: 'AdminfoolCtrl',
+        controllerAs: 'adminfool'
+      })
+      .when('/Adminfool/Edit/:id', {
+        templateUrl: 'views/admin/edit.html',
         controller: 'AdminfoolCtrl',
         controllerAs: 'adminfool'
       })
