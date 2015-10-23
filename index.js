@@ -3,6 +3,7 @@ var app = express();
 var path    = require("path");
 var http = require('http');
 var mysql = require('mysql');
+var bodyParser = require('body-parser');
 
 var mysqlHost = process.env.OPENSHIFT_MYSQL_DB_HOST || 'localhost';
 var mysqlPort = process.env.OPENSHIFT_MYSQL_DB_PORT || 3306;
@@ -27,12 +28,12 @@ app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use(bodyParser.json());
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 
 app.get('/Login', function(req, res) {
-  //console.log(req.headers);
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
     if(req.headers.username == "joep") {
       res.send("OK")
@@ -46,7 +47,6 @@ app.get('/Login', function(req, res) {
 });
 
 app.get('/TourData', function(req, res) {
-  //console.log(req.headers);
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
     mysqlClient.query('SELECT * from tour', function (err, rows, fields) {
       if (err) {
@@ -61,7 +61,6 @@ app.get('/TourData', function(req, res) {
 });
 
 app.get('/SingleTourData', function(req, res) {
-  //console.log(req.headers);
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
     mysqlClient.query('SELECT * from tour where id =' + mysql.escape(req.headers.id), function (err, rows, fields) {
       if (err) {
@@ -74,6 +73,58 @@ app.get('/SingleTourData', function(req, res) {
     res.redirect('/');
   }
 });
+
+app.post('/TourData/Update', function(req, res) {
+  if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
+    var query = 'UPDATE tour SET date=' + mysql.escape(req.body.date) + ', place=' + mysql.escape(req.body.place) +
+        ', cafe=' + mysql.escape(req.body.cafe) + ', begintime=' + mysql.escape(req.body.beginTime) +
+        ', endtime=' + mysql.escape(req.body.endTime) + ', typeOfParty=' + mysql.escape(req.body.typeOfParty) +
+        ' where id=' + mysql.escape(req.body.id);
+    mysqlClient.query(query, function (err) {
+      if (err) {
+        throw new Error();
+      }
+      res.end("Succeed");
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.post('/TourData/Create', function(req, res) {
+  if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
+    var query = 'INSERT INTO tour (date, place, cafe, begintime, endtime, typeOfParty) VALUES (' +
+        mysql.escape(req.body.date) + ', ' +
+        mysql.escape(req.body.place) + ', ' +
+        mysql.escape(req.body.cafe) + ', ' +
+        mysql.escape(req.body.beginTime) + ', ' +
+        mysql.escape(req.body.endTime) + ', ' +
+        mysql.escape(req.body.typeOfParty) + ');';
+    mysqlClient.query(query, function (err) {
+      if (err) {
+        throw new Error();
+      }
+      res.end("Succeed");
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.post('/TourData/Delete', function(req, res) {
+  if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
+    var query = 'DELETE FROM tour WHERE id=' + mysql.escape(req.body.id);
+    mysqlClient.query(query, function (err) {
+      if (err) {
+        throw new Error();
+      }
+      res.end("Succeed");
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname+'/index.html'))

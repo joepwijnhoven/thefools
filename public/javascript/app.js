@@ -36,6 +36,11 @@ angular
         controller: 'AdminfoolCtrl',
         controllerAs: 'adminfool'
       })
+      .when('/Adminfool/Create', {
+        templateUrl: 'views/admin/create.html',
+        controller: 'AdminfoolCtrl',
+        controllerAs: 'adminfool'
+      })
       .when('/Contact', {
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl',
