@@ -81,7 +81,7 @@ angular.module('theFoolsApp')
       }
       $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
       $http.post("/TourData/Create", record).success(function() {
-        //$scope.results = data;
+        $location.path('/Adminfool/Index');
       });
     };
 

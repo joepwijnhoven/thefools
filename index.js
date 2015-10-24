@@ -102,6 +102,7 @@ app.post('/TourData/Create', function(req, res) {
         mysql.escape(req.body.typeOfParty) + ');';
     mysqlClient.query(query, function (err) {
       if (err) {
+        console.log(err);
         throw new Error();
       }
       res.end("Succeed");
