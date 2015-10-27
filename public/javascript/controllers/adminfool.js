@@ -75,7 +75,7 @@ angular.module('theFoolsApp')
 
     $scope.createSendingRecord = function(r) {
       r.date = document.getElementById('date').value;
-      r.typeOfParty = document.getElementById('typeOfParty').checked ? 'open' : 'gesloten';
+      r.typeOfParty = document.getElementById('typeOfParty').checked ? 'open' : 'besloten';
       for(var value in r) {
         if(r[value] == "") {
           delete r[value];
