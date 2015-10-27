@@ -33,7 +33,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
-                    <label><input type="checkbox" ng-model="result.typeOfParty">Open?</label>
+                    <label><input id="typeOfParty" type="checkbox" ng-checked="result.typeOfParty == 'open'" ng-model="result.typeOfParty">Open?</label>
                 </div>
             </div>
         </div>
@@ -48,8 +48,5 @@
             </div>
         </div>
     </form>
-    <div id="successDiv" class="alert alert-success hidden">
-        Data is opgeslagen
-    </div>
     <a href="/Adminfool/Index">&laquo Terug</a>
 </div>

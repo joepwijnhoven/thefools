@@ -48,49 +48,40 @@ angular.module('theFoolsApp')
         $http.defaults.headers.common.id = $routeParams.id;
         $http.get("/SingleTourData").success(function(data) {
           $scope.result = data[0];
-          $scope.result.typeOfParty = $scope.result.typeOfParty.data[0] == '1' ? true : false;
         });
       }
     }
 
     $scope.save = function(record) {
-      record.date = document.getElementById('date').value;
-      if(!record.typeOfParty) {
-        record.typeOfParty = '0';
-      }
-      for(var value in record) {
-        if(record[value] == "") {
-          delete record[value];
-        }
-      }
       $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
-      $http.post("/TourData/Update", record).success(function() {
-        $("#successDiv").show();
+      $http.post("/TourData/Update", $scope.createSendingRecord(record)).success(function() {
+        $location.path('/Adminfool/Index');
       });
     };
 
     $scope.create = function(record) {
-      record.date = document.getElementById('date').value;
-      if(!record.typeOfParty) {
-        record.typeOfParty = '0';
-      }
-      for(var value in record) {
-        if(record[value] == "") {
-          delete record[value];
-        }
-      }
       $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
-      $http.post("/TourData/Create", record).success(function() {
+      $http.post("/TourData/Create", $scope.createSendingRecord(record)).success(function() {
         $location.path('/Adminfool/Index');
       });
     };
 
     $scope.delete = function(id) {
-      console.log(id);
       $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
       $http.post("/TourData/Delete", {'id':  id }).success(function() {
         $location.path('/Adminfool/Index');
       });
     };
+
+    $scope.createSendingRecord = function(r) {
+      r.date = document.getElementById('date').value;
+      r.typeOfParty = document.getElementById('typeOfParty').checked ? 'open' : 'gesloten';
+      for(var value in r) {
+        if(r[value] == "") {
+          delete r[value];
+        }
+      }
+      return r;
+    }
 
   }]);
