@@ -13,7 +13,13 @@
         {{optreden.date | date:'d MMMM'}}
       </td>
       <td>
-        {{optreden.time || "----"}}
+        <div ng-show="optreden.typeOfParty == 'open'">
+          {{optreden.begintime || "----"}}
+          {{optreden.begintime && optreden.endtime ? "-" + optreden.endtime : ""}}
+        </div>
+        <div ng-show="optreden.typeOfParty != 'open'">
+          besloten
+        </div>
       </td>
       <td>
         {{optreden.place}}

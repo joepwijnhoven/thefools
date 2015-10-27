@@ -76,10 +76,9 @@ app.get('/SingleTourData', function(req, res) {
 
 app.post('/TourData/Update', function(req, res) {
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
-    console.log(req.body.typeOfParty);
     var query = 'UPDATE tour SET date=' + mysql.escape(req.body.date) + ', place=' + mysql.escape(req.body.place) +
-        ', cafe=' + mysql.escape(req.body.cafe) + ', begintime=' + mysql.escape(req.body.beginTime) +
-        ', endtime=' + mysql.escape(req.body.endTime) + ', typeOfParty=' + mysql.escape(req.body.typeOfParty) +
+        ', cafe=' + mysql.escape(req.body.cafe) + ', begintime=' + mysql.escape(req.body.begintime) +
+        ', endtime=' + mysql.escape(req.body.endtime) + ', typeOfParty=' + mysql.escape(req.body.typeOfParty) +
         ' where id=' + mysql.escape(req.body.id);
     mysqlClient.query(query, function (err) {
       if (err) {
@@ -98,8 +97,8 @@ app.post('/TourData/Create', function(req, res) {
         mysql.escape(req.body.date) + ', ' +
         mysql.escape(req.body.place) + ', ' +
         mysql.escape(req.body.cafe) + ', ' +
-        mysql.escape(req.body.beginTime) + ', ' +
-        mysql.escape(req.body.endTime) + ', ' +
+        mysql.escape(req.body.begintime) + ', ' +
+        mysql.escape(req.body.endtime) + ', ' +
         mysql.escape(req.body.typeOfParty) + ');';
     mysqlClient.query(query, function (err) {
       if (err) {
