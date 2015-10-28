@@ -48,7 +48,12 @@ app.get('/Login', function(req, res) {
 
 app.get('/TourData', function(req, res) {
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
-    mysqlClient.query('SELECT * from tour WHERE YEAR(date) = YEAR(CURDATE()) ORDER BY date', function (err, rows, fields) {
+    var query = "SELECT id, date, TIME_FORMAT(begintime, '%H:%i') as begintime, TIME_FORMAT(endtime, '%H:%i') as endtime, " +
+                "place, cafe, typeOfParty " +
+                "FROM tour " +
+                "WHERE YEAR(date) = YEAR(CURDATE()) " +
+                "ORDER BY date"
+    mysqlClient.query(query, function (err, rows, fields) {
       if (err) {
         res.send('NOT OK' + JSON.stringify(err));
       } else {
@@ -62,7 +67,10 @@ app.get('/TourData', function(req, res) {
 
 app.get('/SingleTourData', function(req, res) {
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
-    mysqlClient.query('SELECT * from tour where id =' + mysql.escape(req.headers.id), function (err, rows, fields) {
+    var query = "SELECT id, date, TIME_FORMAT(begintime, '%H:%i') as begintime, TIME_FORMAT(endtime, '%H:%i') as endtime, " +
+                "place, cafe, typeOfParty " +
+                "FROM tour where id =" + mysql.escape(req.headers.id)
+    mysqlClient.query(query, function (err, rows, fields) {
       if (err) {
         res.send('NOT OK' + JSON.stringify(err));
       } else {

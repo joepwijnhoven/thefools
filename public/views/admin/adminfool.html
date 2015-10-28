@@ -27,7 +27,12 @@
         <tbody>
         <tr ng-click="showPerformance({{optreden.id}})" ng-repeat="optreden in results">
             <td>
-                {{optreden.date | date:'d MMMM'}}
+                <div class="hidden-small-screen">
+                    {{optreden.date | date:'d MMMM'}}
+                </div>
+                <div class="visible-small-screen">
+                    {{optreden.date | date:'d MMM'}}
+                </div>
             </td>
             <td>
                 <div ng-show="optreden.typeOfParty == 'open'">
