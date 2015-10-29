@@ -19,8 +19,7 @@
       </td>
       <td>
         <div ng-show="optreden.typeOfParty == 'open'">
-          {{optreden.begintime || "----"}}
-          {{optreden.begintime && optreden.endtime ? "-" + optreden.endtime : ""}}
+          {{optreden.begintime && optreden.endtime ? optreden.begintime + "-" + optreden.endtime : (optreden.begintime || "----")}}
         </div>
         <div ng-show="optreden.typeOfParty != 'open'">
           besloten
