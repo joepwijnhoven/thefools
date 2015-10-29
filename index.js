@@ -105,7 +105,7 @@ app.post('/TourData/Update', function(req, res) {
   }
 });
 
-app.post('/TourData/Create', function(req, res) {
+app.post('/TourData/Create', function(req, res, next) {
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
     var query = 'INSERT INTO tour (date, place, cafe, begintime, endtime, typeOfParty) VALUES (' +
         mysql.escape(req.body.date) + ', ' +
@@ -116,7 +116,7 @@ app.post('/TourData/Create', function(req, res) {
         mysql.escape(req.body.typeOfParty) + ');';
     mysqlClient.query(query, function (err) {
       if (err) {
-        throw new Error();
+        return next(err);
       }
       res.end("Succeed");
     });
