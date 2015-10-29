@@ -33,14 +33,20 @@ app.use(bodyParser.json());
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 
-app.get('/Login', function(req, res) {
+app.post('/Login', function(req, res, next) {
   if(req.headers.authorization && req.headers.authorization == 'AFG345W2QxgO0') {
-    if(req.headers.username == "joep") {
-      res.send("OK")
-    } else {
-      throw new Error();
-    }
-
+    mysqlClient.query("SELECT * FROM adminfool", function (err, rows, fields) {
+      if (err) {
+        return next(err);
+      } else {
+        var adminfool = rows[0];
+        if(req.body.username == adminfool.username && req.body.password == adminfool.password) {
+          res.send("OK");
+        } else {
+          return next(new Error('failed to find user'));
+        }
+      }
+    });
   } else {
     res.redirect('/');
   }
@@ -74,7 +80,7 @@ app.get('/SingleTourData', function(req, res) {
       if (err) {
         res.send('NOT OK' + JSON.stringify(err));
       } else {
-        res.send(rows);
+        res.send(rows[0]);
       }
     });
   } else {
@@ -110,7 +116,6 @@ app.post('/TourData/Create', function(req, res) {
         mysql.escape(req.body.typeOfParty) + ');';
     mysqlClient.query(query, function (err) {
       if (err) {
-        console.log(err);
         throw new Error();
       }
       res.end("Succeed");

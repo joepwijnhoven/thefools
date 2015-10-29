@@ -11,6 +11,11 @@
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <br>
+    <div ng-show="invalidLogIn" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        Username of wachtwoord onjuist.
+    </div>
+    <br>
 </div>
 <div ng-show="loggedIn" data-ng-init="init()">
     <a ng-click="logOff()" class="btn btn-default">log uit</a>

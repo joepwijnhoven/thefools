@@ -21,13 +21,12 @@ angular.module('theFoolsApp')
 
     $scope.submit = function() {
       $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
-      $http.defaults.headers.common.username = this.username;
-      $http.defaults.headers.common.password = this.password;
-      $http.get("/Login").success(function(data) {
+      var logIn = {'username':  this.username, 'password': this.password};
+      $http.post("/Login", logIn).success(function(data) {
         $cookieStore.put("loggedin", "true");
         $scope.loggedIn = $cookieStore.get("loggedin");
       }).error(function(data) {
-        $location.path('/');
+        $scope.invalidLogIn = true;
       });
     };
 
@@ -47,7 +46,7 @@ angular.module('theFoolsApp')
         $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
         $http.defaults.headers.common.id = $routeParams.id;
         $http.get("/SingleTourData").success(function(data) {
-          $scope.result = data[0];
+          $scope.result = data;
         });
       }
     }
@@ -68,7 +67,7 @@ angular.module('theFoolsApp')
 
     $scope.delete = function(id) {
       $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
-      $http.post("/TourData/Delete", {'id':  id }).success(function() {
+      $http.post("/TourData/Delete", {'id':  id}).success(function() {
         $location.path('/Adminfool/Index');
       });
     };
