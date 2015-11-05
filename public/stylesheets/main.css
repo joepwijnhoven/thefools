@@ -9,12 +9,23 @@ body {
   padding: 0;
 }
 
+.header {
+  background-color: #222;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #FFA500;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFA500;
 }
 
 /* Make the masthead heading the same height as the navigation */
