@@ -5,8 +5,21 @@
   padding: 0.2em 0;
 }
 
+a {
+  color: #FFA500;
+}
+
+a:hover {
+  color: #FFFFFF;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  color: #000000;
+}
+
 body {
   padding: 0;
+  background-color: #484848;
 }
 
 .header {
@@ -40,12 +53,15 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  color: #FFA500;
+  background-color: #222;
+  border-top: 1px solid #080808;
 }
 
 .header,
 .footer {
+  padding-bottom: 0;
+  margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
 }
@@ -63,13 +79,27 @@ body {
 }
 
 .viewClass {
-  min-height: 150px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  min-height: 80vh;
+  background-color:rgba(0,0,0,0.7);
+  color: #FFFFFF;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
+  }
+
+  body {
+    max-height: 60vh;
+    background: url("/images/achtergrond.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
   .visible-small-screen {
