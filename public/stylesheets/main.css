@@ -18,7 +18,13 @@ a:hover {
 }
 
 body {
+  background-color: #222;
   padding: 0;
+}
+
+.background {
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #484848;
 }
 
@@ -26,10 +32,12 @@ body {
   background-color: #222;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.content,
-.footer {
+.content {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -81,8 +89,7 @@ body {
 .viewClass {
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-bottom: 30px;
-  min-height: 80vh;
+  min-height: 500px;
   background-color:rgba(0,0,0,0.7);
   color: #FFFFFF;
 }
@@ -93,8 +100,7 @@ body {
     max-width: 730px;
   }
 
-  body {
-    max-height: 60vh;
+  .background {
     background: url("/images/achtergrond.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -115,9 +121,5 @@ body {
   .footer {
     padding-left: 0;
     padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
   }
 }
