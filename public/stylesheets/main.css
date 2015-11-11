@@ -89,7 +89,7 @@ body {
 .viewClass {
   padding-top: 15px;
   padding-bottom: 15px;
-  min-height: 500px;
+  min-height: 200px;
   background-color:rgba(0,0,0,0.7);
   color: #FFFFFF;
 }
@@ -98,6 +98,10 @@ body {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
+  }
+
+  .viewClass {
+    min-height: 500px;
   }
 
   .background {
