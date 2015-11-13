@@ -33,7 +33,7 @@
         <tr ng-click="showPerformance({{optreden.id}})" ng-repeat="optreden in results">
             <td>
                 <div class="hidden-small-screen">
-                    {{optreden.date | date:'d MMMM'}}
+                    {{optreden.date | date:'d MMMM yyyy'}}
                 </div>
                 <div class="visible-small-screen">
                     {{optreden.date | date:'d MMM'}}
@@ -51,7 +51,7 @@
                 {{optreden.place}}
             </td>
             <td>
-                {{optreden.cafe || "----"}}
+                {{optreden.typeOfParty == 'open' ? (optreden.cafe || "----") : 'Besloten'}}
             </td>
         </tr>
         </tbody>
