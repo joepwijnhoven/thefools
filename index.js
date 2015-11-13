@@ -57,7 +57,7 @@ app.get('/TourData', function(req, res) {
     var query = "SELECT id, date, TIME_FORMAT(begintime, '%H:%i') as begintime, TIME_FORMAT(endtime, '%H:%i') as endtime, " +
                 "place, cafe, typeOfParty " +
                 "FROM tour " +
-                "WHERE YEAR(date) = YEAR(CURDATE()) " +
+                "WHERE YEAR(date) >= YEAR(CURDATE()) " +
                 "ORDER BY date"
     mysqlClient.query(query, function (err, rows, fields) {
       if (err) {
