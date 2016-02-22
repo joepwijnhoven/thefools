@@ -46,10 +46,10 @@ angular
         controller: 'ContactCtrl',
         controllerAs: 'contact'
       })
-      .when('/Music', {
-        templateUrl: 'views/music.html',
-        controller: 'MusicCtrl',
-        controllerAs: 'music'
+      .when('/Pictures', {
+        templateUrl: 'views/pictures.html',
+        controller: 'PicturesCtrl',
+        controllerAs: 'pictures'
       })
       .when('/Tour', {
         templateUrl: 'views/tour.html',

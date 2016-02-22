@@ -94,6 +94,26 @@ body {
   color: #FFFFFF;
 }
 
+.gallery a img {
+  width: 49%;
+  height: 230px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gallery a:last-child img, .gallery a:nth-last-child(2) img{
+  margin-bottom: 0px;
+}
+
+.gallery a:nth-child(even) img {
+  float: right;
+}
+
+.gallery a:nth-child(odd) img {
+  float: left;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
