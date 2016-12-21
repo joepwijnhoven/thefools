@@ -52,17 +52,25 @@ angular.module('theFoolsApp')
     }
 
     $scope.save = function(record) {
-      $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
-      $http.post("/TourData/Update", $scope.createSendingRecord(record)).success(function() {
-        $location.path('/Adminfool/Index');
-      });
+      if(isValidDate(record.date)) {
+        $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
+        $http.post("/TourData/Update", $scope.createSendingRecord(record)).success(function() {
+          $location.path('/Adminfool/Index');
+        });
+      } else {
+        alert("Write the date in this format: 'yyyy-mm-dd'. Example given: 2016-01-30");
+      }
     };
 
     $scope.create = function(record) {
-      $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
-      $http.post("/TourData/Create", $scope.createSendingRecord(record)).success(function() {
-        $location.path('/Adminfool/Index');
-      });
+      if(isValidDate(record.date)) {
+        $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
+        $http.post("/TourData/Create", $scope.createSendingRecord(record)).success(function() {
+          $location.path('/Adminfool/Index');
+        });
+      } else {
+        alert("Write the date in this format: 'yyyy-mm-dd'. Example given: 2016-01-30");
+      }
     };
 
     $scope.delete = function(id) {
@@ -81,6 +89,16 @@ angular.module('theFoolsApp')
         }
       }
       return r;
+    }
+
+    function isValidDate(dateString) {
+      var regEx = /^\d{4}-\d{2}-\d{2}$/;
+      if(!dateString.match(regEx))
+        return false;  // Invalid format
+      var d;
+      if(!((d = new Date(dateString))|0))
+        return false; // Invalid date (or this could be epoch)
+      return d.toISOString().slice(0,10) == dateString;
     }
 
   }]);
