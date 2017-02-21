@@ -46,13 +46,28 @@ angular.module('theFoolsApp')
         $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
         $http.defaults.headers.common.id = $routeParams.id;
         $http.get("/SingleTourData").success(function(data) {
+          data.date = formatDate(data.date);
           $scope.result = data;
         });
       }
     }
 
+    function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+
     $scope.save = function(record) {
       if(isValidDate(record.date)) {
+        var date = new Date(record.date);
+        record.date = date.toUTCString();
         $http.defaults.headers.common.authorization = "AFG345W2QxgO0";
         $http.post("/TourData/Update", $scope.createSendingRecord(record)).success(function() {
           $location.path('/Adminfool/Index');

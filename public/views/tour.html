@@ -1,3 +1,5 @@
+<div ng-repeat="value in result">
+<h2 align="middle">{{value.name}}</h2>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -8,7 +10,7 @@
   </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="optreden in result">
+    <tr ng-repeat="optreden in value.tours">
       <td>
         <div class="hidden-small-screen">
           {{optreden.date | date:'d MMMM yyyy'}}
@@ -34,5 +36,5 @@
     </tr>
   </tbody>
 </table>
-
+</div>
 
