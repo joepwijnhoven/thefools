@@ -9,6 +9,10 @@ a {
   color: #FFA500;
 }
 
+.spacing {
+  margin-bottom: 15px;
+}
+
 a:hover {
   color: #FFFFFF;
 }
