@@ -32,4 +32,9 @@ angular.module('theFoolsApp').controller('TourCtrl', ['$scope', '$http', functio
     	sortedTour.push(yearObject);
         $scope.result = sortedTour;
     });
+
+    $('#2017').click(function(e){
+        $('#wrapper').slideUp(400);
+        e.preventDefault();
+    });
 }]);

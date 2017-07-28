@@ -9,6 +9,13 @@ a {
   color: #FFA500;
 }
 
+@font-face {
+  font-family: 'Outrun future';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/font/Outrun future.otf') format('opentype');
+}
+
 .spacing {
   margin-bottom: 15px;
 }
@@ -46,11 +53,18 @@ body {
   padding-right: 15px;
 }
 
+h2 {
+  font-family: 'Outrun future', serif;
+}
+
 .navbar-inverse .navbar-brand {
+  font-family: 'Outrun future', serif;
+  font-size: 23px;
   color: #FFA500;
 }
 
 .navbar-inverse .navbar-nav > li > a {
+  font-family: 'Outrun future', serif;
   color: #FFA500;
 }
 
@@ -126,6 +140,11 @@ body {
 
   .viewClass {
     min-height: 500px;
+  }
+
+  .navbar-nav {
+    margin-right: -15px;
+    float: right;
   }
 
   .background {

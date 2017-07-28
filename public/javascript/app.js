@@ -46,11 +46,11 @@ angular
         controller: 'ContactCtrl',
         controllerAs: 'contact'
       })
-      //.when('/Biography', {
-      //  templateUrl: 'views/biography.html',
-      //  controller: 'MainCtrl',
-      //  controllerAs: 'main'
-      //})
+      .when('/Biography', {
+        templateUrl: 'views/biography.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
       .when('/Pictures', {
         templateUrl: 'views/pictures.html',
         controller: 'PicturesCtrl',
