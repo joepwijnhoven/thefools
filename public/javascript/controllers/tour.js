@@ -33,8 +33,8 @@ angular.module('theFoolsApp').controller('TourCtrl', ['$scope', '$http', functio
         $scope.result = sortedTour;
     });
 
-    $('#2017').click(function(e){
-        $('#wrapper').slideUp(400);
-        e.preventDefault();
-    });
+    //$('#2017').click(function(e){
+    //    $('#wrapper').slideUp(400);
+    //    e.preventDefault();
+    //});
 }]);

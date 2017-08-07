@@ -115,5 +115,4 @@ angular.module('theFoolsApp')
         return false; // Invalid date (or this could be epoch)
       return d.toISOString().slice(0,10) == dateString;
     }
-
   }]);
