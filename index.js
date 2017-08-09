@@ -138,6 +138,9 @@ app.post('/TourData/Delete', function(req, res) {
   }
 });
 
+app.get('/robots.txt', function(req, res) {
+  res.sendFile(path.join(__dirname+'/robots.txt'))
+})
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname+'/index.html'))
