@@ -24,7 +24,7 @@ mysqlClient.connect(function(err){
 });
 
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
-app.set('ip',  process.env.IP || process.env.OPENSHIFT_NODEJS_IP || || "10.128.42.117");
+app.set('ip',  process.env.IP || process.env.OPENSHIFT_NODEJS_IP || "10.128.42.117");
 
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
