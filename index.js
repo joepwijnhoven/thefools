@@ -15,13 +15,13 @@ if(process.env['MYSQL_SERVICE_PORT']) {
   mysqlPass = 'h_JyfUysVDh5';
 }
 
-var mysqlDb   = 'thefools';
-var mysqlString = 'mysql://'   + mysqlUser + ':' + mysqlPass + '@' + mysqlHost + ':' + mysqlPort + '/' + mysqlDb;
+//var mysqlDb   = 'thefools';
+//var mysqlString = 'mysql://'   + mysqlUser + ':' + mysqlPass + '@' + mysqlHost + ':' + mysqlPort + '/' + mysqlDb;
 
-var mysqlClient = mysql.createConnection(mysqlString);
-mysqlClient.connect(function(err){
-  if (err) console.log(err);
-});
+//var mysqlClient = mysql.createConnection(mysqlString);
+//mysqlClient.connect(function(err){
+ // if (err) console.log(err);
+//});
 
 app.set('port', process.env.PORT || 5000);
 //app.set('ip',  process.env.IP || process.env.OPENSHIFT_NODEJS_IP || "10.128.42.117");
