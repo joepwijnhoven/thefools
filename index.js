@@ -5,13 +5,12 @@ var http = require('http');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
-var mysqlServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase()
-var mysqlHost = process.env[mysqlServiceName + '_SERVICE_HOST'] || 'localhost';
-var mysqlPort = process.env[mysqlServiceName + '_SERVICE_PORT'] || 3306;
+var mysqlHost = process.env['MYSQL_SERVICE_HOST'] || 'localhost';
+var mysqlPort = process.env['MYSQL_SERVICE_PORT'] || 3306;
 var mysqlUser = 'root';
 var mysqlPass = 'Project1234';
 
-if(process.env.thefools_SERVICE_PORT) {
+if(process.env['MYSQL_SERVICE_PORT']) {
   mysqlUser = 'adminBJQ972c';
   mysqlPass = 'h_JyfUysVDh5';
 }
