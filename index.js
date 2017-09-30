@@ -216,7 +216,7 @@ var tourdatajson = [
 //});
 
 app.set('port', process.env.PORT || 5000);
-//app.set('ip',  "127.0.0.1");
+app.set('ip',  process.env.IP || "127.0.0.1");
 
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
